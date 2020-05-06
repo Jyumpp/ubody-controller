@@ -137,7 +137,9 @@
     "Values": {
       "Min_Position": 0,
       "Max_Position": 1023,
-      "Max_Angle": 300
+      "Max_Angle": 300,
+      "Torque_Factor": 1,
+      "Current_Factor": 1.46
     }
   }
 }

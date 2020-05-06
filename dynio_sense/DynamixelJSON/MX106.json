@@ -161,7 +161,9 @@
     "Values": {
       "Min_Position": 0,
       "Max_Position": 4095,
-      "Max_Angle": 360
+      "Max_Angle": 360,
+      "Torque_Factor": 1.61,
+      "Current_Factor": 5.00
     }
   },
   "Protocol_2": {
@@ -378,7 +380,9 @@
     "Values:": {
       "Min_Position": 0,
       "Max_Position": 4095,
-      "Max_Angle": 360
+      "Max_Angle": 360,
+      "Torque_Factor": 5.00,
+      "Current_Factor": 1.61
     }
   }
 }

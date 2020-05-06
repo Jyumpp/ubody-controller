@@ -29,10 +29,6 @@
         8,
         2
       ],
-      "Drive_Mode": [
-        10,
-        1
-      ],
       "Temperature_Limit": [
         11,
         1
@@ -141,6 +137,18 @@
         50,
         2
       ],
+      "Current": [
+        68,
+        2
+      ],
+      "Torque_Ctrl_Mode_Enable": [
+        70,
+        1
+      ],
+      "Goal_Torque": [
+        71,
+        2
+      ],
       "Goal_Acceleration": [
         73,
         1
@@ -149,7 +157,9 @@
     "Values": {
       "Min_Position": 0,
       "Max_Position": 4095,
-      "Max_Angle": 360
+      "Max_Angle": 360,
+      "Torque_Factor": 1.46,
+      "Current_Factor": 4.00
     }
   },
   "Protocol_2": {
@@ -366,7 +376,9 @@
     "Values:": {
       "Min_Position": 0,
       "Max_Position": 4095,
-      "Max_Angle": 360
+      "Max_Angle": 360,
+      "Torque_Factor": 1.46,
+      "Current_Factor": 3.36
     }
   }
 }

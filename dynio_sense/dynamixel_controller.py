@@ -193,6 +193,8 @@ class DynamixelMotor:
         self.min_position = config.get("Values").get("Min_Position")
         self.max_position = config.get("Values").get("Max_Position")
         self.max_angle = config.get("Values").get("Max_Angle")
+        self.torque_factor = config.get("Values").get("Torque_Factor")
+        self.current_factor = config.get("Values").get("Current_Factor")
 
     def write_control_table(self, data_name, value):
         """Writes a value to a control table area of a specific name"""
@@ -298,7 +300,8 @@ class DynamixelMotor:
                 (self.max_position + 1) - self.min_position)) * self.max_angle
 
     def get_current(self):
-        """Returns the current motor load"""
+        """Returns the current motor load in mA"""
+        current = 0
         if self.CONTROL_TABLE_PROTOCOL == 1:
             current = self.read_control_table("Present_Load")
             if current < 0:
@@ -307,9 +310,13 @@ class DynamixelMotor:
                 # protocol 1 uses 1's compliment rather than 2's compliment for negative numbers.
                 current -= 1023
                 current *= -1
-            return current
         elif self.CONTROL_TABLE_PROTOCOL == 2:
-            return self.read_control_table("Present_Current")
+            current = self.read_control_table("Present_Current")
+        return current * self.current_factor
+
+    def get_torque(self):
+        """Returns the current motor torque in Newton meters"""
+        return self.get_current()*self.torque_factor
 
     def torque_enable(self):
         """Enables motor torque"""
@@ -354,6 +361,4 @@ class DynamixelSensor:
         self.write_control_table("Torque_Enable", 0)
 
     def set_ports(self, port1: bool, port2: bool, port3: bool):
-        self.write_control_table("Servo_Enable", (port1 & 1 << 0) | (port2 & 1 << 1) | (port3 & 1 << 2))
-
-
+        self.write_control_table("Servo_Enable", ((port1 & 1 << 0) | (port2 & 1 << 1) | (port3 & 1 << 2)) & 0xff)

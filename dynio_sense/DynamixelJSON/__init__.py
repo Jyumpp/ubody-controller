@@ -17,4 +17,4 @@
 # Author: Hunter Halloran (Jyumpp)
 
 # Modifications by Hunter Halloran outside of B-SAIL scope.
-# Added UBODY.json to this directory
+# Added UBODY.json to this directory and "Torque_Factor" parameter.

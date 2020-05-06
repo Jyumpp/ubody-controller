@@ -1,8 +1,8 @@
 
-# dynio
+# dynio_sense
 
 
-# dynio.dynamixel_controller
+# dynio_sense.dynamixel_controller
 
 
 ## DynamixelIO
@@ -200,7 +200,13 @@ Returns the motor position as an angle in degrees
 ```python
 DynamixelMotor.get_current()
 ```
-Returns the current motor load
+Returns the current motor load in mA
+
+### get_torque
+```python
+DynamixelMotor.get_torque()
+```
+Returns the current motor torque in Newton meters
 
 ### torque_enable
 ```python
@@ -213,3 +219,21 @@ Enables motor torque
 DynamixelMotor.torque_disable()
 ```
 Disables motor torque
+
+## DynamixelSensor
+```python
+DynamixelSensor(self, dxl_id, dxl_io, json_file)
+```
+Creates the basis of individual sensor objects
+
+### write_control_table
+```python
+DynamixelSensor.write_control_table(data_name, value)
+```
+Writes a value to a control table area of a specific name
+
+### read_control_table
+```python
+DynamixelSensor.read_control_table(data_name)
+```
+Reads the value from a control table area of a specific name
