@@ -370,3 +370,30 @@ class DynamixelSensor:
     def set_ports(self, port1: bool, port2: bool, port3: bool):
         """Specifies ports that should be turned on or off on the U-BODY when ports_enable() is called"""
         self.write_control_table("Servo_Enable", (((port1 & 1) << 0) | ((port2 & 1) << 1) | ((port3 & 1) << 2)) & 0xff)
+
+    def set_digital_read(self):
+        self.write_control_table("Digital_Mode", 0)
+
+    def set_digital_write(self):
+        self.write_control_table("Digital_Mode", 1)
+
+    def get_digital(self):
+        self.write_control_table("Digital_Mode", 0)
+        return self.read_control_table("Digital_Data")
+
+    def set_digital(self, value):
+        self.write_control_table("Digital_Mode", 1)
+        self.write_control_table("Digital_data", value)
+
+    def set_digital_pins(self, pin0: bool = False, pin1: bool = False, pin2: bool = False, pin3: bool = False,
+                         pin4: bool = False, pin5: bool = False, pin6: bool = False, pin7: bool = False):
+        self.write_control_table("Digital_Mode", 1)
+        self.write_control_table("Digital_data", (
+                ((pin0 & 1) << 0) | ((pin1 & 1) << 1) | ((pin2 & 1) << 2) | ((pin3 & 1) << 2) |
+                ((pin4 & 1) << 2) | ((pin5 & 1) << 2) | ((pin6 & 1) << 2) | ((pin7 & 1) << 2)) & 0xff)
+
+    def set_analog_channel(self, channel):
+        self.write_control_table("Analog_Channel", channel)
+
+    def get_analog(self):
+        return self.read_control_table("Analog_Data")

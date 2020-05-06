@@ -48,7 +48,7 @@ mx_64_2 = dxl_io.new_mx64(3, 2)  # MX-64 protocol 2 with ID 3
 ```
 
 #### Motor Control:
-See [documentation](https://github.com/Jyumpp/ubody-controller/blobs/master/docs.md) for full list of functions 
+See [documentation](https://github.com/Jyumpp/ubody-controller/blob/master/docs.md) for full list of functions 
 and their usage.
 
 The most prevalent functions are pre-implemented as methods for the motor objects. 

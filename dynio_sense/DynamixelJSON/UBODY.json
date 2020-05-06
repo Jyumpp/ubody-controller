@@ -40,6 +40,22 @@
       "Servo_Enable": [
         45,
         1
+      ],
+      "Digital_Mode": [
+        50,
+        1
+      ],
+      "Digital_Data": [
+        51,
+        1
+      ],
+      "Analog_Channel": [
+        52,
+        1
+      ],
+      "Analog_Data": [
+        53,
+        2
       ]
     },
     "Values": {

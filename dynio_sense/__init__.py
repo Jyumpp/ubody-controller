@@ -16,4 +16,6 @@
 
 # Author: Hunter Halloran (Jyumpp)
 
+# Modifications by Hunter Halloran beyond B-SAIL scope.
+# Changed name of library import for new install location.
 import dynio_sense.dynamixel_controller as dxl
