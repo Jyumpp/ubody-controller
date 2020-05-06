@@ -1,0 +1,48 @@
+{
+  "Protocol_1": {
+    "Control_Table": {
+      "Model_Number": [
+        0,
+        2
+      ],
+      "Firmware_Version": [
+        2,
+        1
+      ],
+      "ID": [
+        3,
+        1
+      ],
+      "Baud_Rate": [
+        4,
+        1
+      ],
+      "Return_Delay_Time": [
+        5,
+        1
+      ],
+      "Status_Return_Level": [
+        16,
+        1
+      ],
+      "Shutdown": [
+        18,
+        1
+      ],
+      "Torque_Enable": [
+        24,
+        1
+      ],
+      "Registered": [
+        44,
+        1
+      ],
+      "Servo_Enable": [
+        45,
+        1
+      ]
+    },
+    "Values": {
+    }
+  }
+}
