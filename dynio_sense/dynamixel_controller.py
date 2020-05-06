@@ -121,6 +121,11 @@ class DynamixelIO:
                               pkg_resources.resource_filename(__name__, "DynamixelJSON/MX106.json"),
                               protocol=protocol, control_table_protocol=control_table_protocol)
 
+    def new_ubody(self, dxl_id):
+        """Returns a new DynamixelSensor object for a U-BODY"""
+        return DynamixelSensor(dxl_id, self,
+                               pkg_resources.resource_filename(__name__, "DynamixelJSON/UBODY.json"))
+
     # the following functions are deprecated and will be removed in version 1.0 release. They have been restructured
     # to continue to function for the time being, but are the result of an older system of JSON config files which
     # initially stored less information about each motor, causing a different initialization function to be needed
@@ -316,7 +321,7 @@ class DynamixelMotor:
 
     def get_torque(self):
         """Returns the current motor torque in Newton meters"""
-        return self.get_current()*self.torque_factor
+        return self.get_current() * self.torque_factor
 
     def torque_enable(self):
         """Enables motor torque"""
@@ -355,10 +360,13 @@ class DynamixelSensor:
                                               self.CONTROL_TABLE.get(data_name)[1])
 
     def ports_enable(self):
+        """Turns on power supply for all motors in activated ports"""
         self.write_control_table("Torque_Enable", 1)
 
     def ports_disable(self):
+        """Turns off power supply for all motors regardless of activated ports"""
         self.write_control_table("Torque_Enable", 0)
 
     def set_ports(self, port1: bool, port2: bool, port3: bool):
-        self.write_control_table("Servo_Enable", ((port1 & 1 << 0) | (port2 & 1 << 1) | (port3 & 1 << 2)) & 0xff)
+        """Specifies ports that should be turned on or off on the U-BODY when ports_enable() is called"""
+        self.write_control_table("Servo_Enable", (((port1 & 1) << 0) | ((port2 & 1) << 1) | ((port3 & 1) << 2)) & 0xff)
