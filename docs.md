@@ -62,6 +62,12 @@ DynamixelIO.new_mx106(dxl_id, protocol=1, control_table_protocol=None)
 ```
 Returns a new DynamixelMotor object for an MX106
 
+### new_ubody
+```python
+DynamixelIO.new_ubody(dxl_id)
+```
+Returns a new DynamixelSensor object for a U-BODY
+
 ### new_ax12_1
 ```python
 DynamixelIO.new_ax12_1(*args, **kwargs)
@@ -237,3 +243,21 @@ Writes a value to a control table area of a specific name
 DynamixelSensor.read_control_table(data_name)
 ```
 Reads the value from a control table area of a specific name
+
+### ports_enable
+```python
+DynamixelSensor.ports_enable()
+```
+Turns on power supply for all motors in activated ports
+
+### ports_disable
+```python
+DynamixelSensor.ports_disable()
+```
+Turns off power supply for all motors regardless of activated ports
+
+### set_ports
+```python
+DynamixelSensor.set_ports(port1: bool, port2: bool, port3: bool)
+```
+Specifies ports that should be turned on or off on the U-BODY when ports_enable() is called
