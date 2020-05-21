@@ -386,7 +386,7 @@ class DynamixelSensor:
         self.write_control_table("Digital_data", value)
 
     def set_digital_pins(self, pin0: bool = False, pin1: bool = False, pin2: bool = False, pin3: bool = False,
-                         pin4: bool = False, pin5: bool = False, pin6: bool = False, pin7: bool = False):
+                         pin4: bool = False, pin5: bool = False, pin6: bool = False, pin7: bool = Falses):
         self.write_control_table("Digital_Mode", 1)
         self.write_control_table("Digital_data", (
                 ((pin0 & 1) << 0) | ((pin1 & 1) << 1) | ((pin2 & 1) << 2) | ((pin3 & 1) << 2) |
